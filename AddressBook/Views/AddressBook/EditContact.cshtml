@@ -91,7 +91,7 @@
             @Html.LabelFor(model => model.AssignedTo)
         </div>
         <div class="editor-field">
-            @Html.RadioButtonFor(model => model.AssignedTo, new { @id = "Family" } ) Family
+            @Html.RadioButtonFor(model => model.AssignedTo, "Family" ) Family
             @Html.RadioButtonFor(model => model.AssignedTo, "Colleagues") Colleagues
             @Html.RadioButtonFor(model => model.AssignedTo, "Friends") Friends
             @Html.RadioButtonFor(model => model.AssignedTo, "Other") Other
