@@ -1,0 +1,40 @@
+﻿@using AddressBook.Models;
+@{
+    ViewBag.Title = "ShowContactList";
+    Contact LabelMaker = new Contact();
+}
+
+<h2>ShowContactList</h2>
+
+<table>
+    <tr>
+        <th>@Html.LabelFor(m => LabelMaker.IsFavorite)</th>
+        <th>@Html.LabelFor(m => LabelMaker.FirstName)</th>
+        <th>@Html.LabelFor(m => LabelMaker.LastName)</th>
+        <th>@Html.LabelFor(m => LabelMaker.PhoneNumber)</th>
+        <th>@Html.LabelFor(m => LabelMaker.Email)</th>
+    </tr>
+@foreach (var contact in ContactList.AddressBook)
+{
+    <tr data-contact="@contact.ContactID">
+        <td id="IsFavorite">@if (contact.IsFavorite)
+            {
+                @:☆
+            }
+        </td>
+        <td>@contact.FirstName</td>
+        <td>@contact.LastName</td>
+        <td>@contact.PhoneNumber</td>
+        <td>@contact.Email</td>
+        <td>@Html.ActionLink("Edit", "EditContact", new { ContactID = contact.ContactID })</td>
+        <td>@Html.ActionLink("Remove", "RemoveContact", new { ContactID = contact.ContactID })</td>
+
+    </tr>
+}
+</table>
+
+<script>
+    $j("#IsFavorite").on('click', function () {
+        @*var resultLink = "@Html.ActionLink( "ChangeFavorite", new { ContactID = "$(this).parent(tr).attr('data-contact')" })"*@
+    });
+</script>
