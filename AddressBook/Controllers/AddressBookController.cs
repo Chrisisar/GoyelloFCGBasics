@@ -1,4 +1,5 @@
-﻿using AddressBook.Models;
+﻿using System.Web.Helpers;
+using AddressBook.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,5 +69,17 @@ namespace AddressBook.Controllers
             return View(ContactList.AddressBook);
         }
 
+        public ViewResult Test()
+        {
+            List<WebGridColumn> columns = new List<WebGridColumn>()
+            {
+                new WebGridColumn {ColumnName = "FirstName", Header = "First name"},
+                new WebGridColumn {ColumnName = "LastName", Header = "Last name"} 
+            };
+
+            GridViewModel gridModel = new GridViewModel { Columns = columns , Items = ContactList.AddressBook};
+
+            return View(gridModel);
+        }
     }
 }
