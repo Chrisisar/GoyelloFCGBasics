@@ -75,7 +75,7 @@
             @Html.LabelFor(model => model.DateOfBirth)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DateOfBirth)
+            @Html.EditorFor(model => model.DateOfBirth, new { @class = "date" })
             @Html.ValidationMessageFor(model => model.DateOfBirth)
         </div>
 
@@ -103,9 +103,13 @@
         <div class="editor-field">
             @Html.EnumDropDownListFor(model => model.Sex)
         </div>
+        <div>
+            @Html.TextBox("aa", (DateTime.Now).ToString("dd/MM/yyyy"), new { @class = "date" })
+        </div>
         <p>
             <input type="submit" value="Create" />
         </p>
+
     </fieldset>
 }
 
@@ -113,6 +117,7 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
+@section scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/AddressBook/AddNewContact.js")
 }
