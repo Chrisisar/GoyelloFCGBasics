@@ -57,7 +57,6 @@ C:\Users\jakub.jankowski\Documents\Visual Studio 2012\Projects\GoyelloFCGBasics\
 C:\Users\jakub.jankowski\Documents\Visual Studio 2012\Projects\GoyelloFCGBasics\AddressBook\bin\System.Web.WebPages.xml
 C:\Users\jakub.jankowski\Documents\Visual Studio 2012\Projects\GoyelloFCGBasics\AddressBook\bin\System.Web.WebPages.Deployment.xml
 C:\Users\jakub.jankowski\Documents\Visual Studio 2012\Projects\GoyelloFCGBasics\AddressBook\bin\System.Web.WebPages.Razor.xml
-C:\Users\jakub.jankowski\Documents\Visual Studio 2012\Projects\GoyelloFCGBasics\AddressBook\obj\Debug\AddressBook.csprojResolveAssemblyReference.cache
 C:\Users\jakub.jankowski\Documents\Visual Studio 2012\Projects\GoyelloFCGBasics\AddressBook\obj\Debug\AddressBook.dll
 C:\Users\jakub.jankowski\Documents\Visual Studio 2012\Projects\GoyelloFCGBasics\AddressBook\obj\Debug\AddressBook.pdb
 C:\Users\krzysztof.gornowicz\Documents\Visual Studio 2012\Projects\AddressBook\GoyelloFCGBasics\AddressBook\bin\AddressBook.dll
