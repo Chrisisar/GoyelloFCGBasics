@@ -50,6 +50,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -135,6 +136,7 @@
     </Compile>
     <Compile Include="Models\ContactList.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\GridViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +228,7 @@
     <Content Include="Views\AddressBook\ShowContactList.cshtml" />
     <Content Include="Views\AddressBook\EditContact.cshtml" />
     <Content Include="Views\AddressBook\_AddOrEditContact.cshtml" />
+    <Content Include="Views\AddressBook\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
