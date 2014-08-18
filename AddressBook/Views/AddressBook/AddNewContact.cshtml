@@ -1,4 +1,5 @@
-﻿@model AddressBook.Models.Contact
+﻿@using AddressBook.Extensions
+@model AddressBook.Models.Contact
 
 @{
     ViewBag.Title = "AddNewContact";
@@ -6,7 +7,8 @@
 
 <h2>AddNewContact</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -95,7 +97,12 @@
             @Html.RadioButtonFor(model => model.AssignedTo, 0) Other
             @Html.ValidationMessageFor(model => model.IsFavorite)
         </div>
-
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sex)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownListFor(model => model.Sex)
+        </div>
         <p>
             <input type="submit" value="Create" />
         </p>
