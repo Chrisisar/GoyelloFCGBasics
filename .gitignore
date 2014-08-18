@@ -1,0 +1,4 @@
+/AddressBook/obj/Debug/*.cache
+*.pdb
+bin
+obj

@@ -19,7 +19,7 @@ namespace AddressBook.Controllers
 
         public ViewResult AddNewContact()
         {
-            return View();
+            return View(new Contact());
         }
 
         [HttpPost]

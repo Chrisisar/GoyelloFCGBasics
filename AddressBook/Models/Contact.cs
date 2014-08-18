@@ -72,6 +72,7 @@ namespace AddressBook.Models
             {
                 ContactID = 0;
             }
+            DateOfBirth = DateTime.Now;
             AssignedTo = Group.Default;
             IsFavorite = false;
         }
