@@ -50,7 +50,6 @@ namespace AddressBook.Models
 
         [DisplayName("Date of Birth")]
         [DataType(DataType.Date)]
-        [DateRange("2014/08/18", "2015/01/01")]
         public DateTime DateOfBirth { get; set; }
 
         [DisplayName("Favorite")]

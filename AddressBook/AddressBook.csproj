@@ -195,7 +195,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\AddressBook\AddNewContact.js" />
+    <Content Include="Scripts\AddressBook\AddOrEditContact.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -225,6 +225,7 @@
     <Content Include="Views\AddressBook\AddNewContact.cshtml" />
     <Content Include="Views\AddressBook\ShowContactList.cshtml" />
     <Content Include="Views\AddressBook\EditContact.cshtml" />
+    <Content Include="Views\AddressBook\_AddOrEditContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

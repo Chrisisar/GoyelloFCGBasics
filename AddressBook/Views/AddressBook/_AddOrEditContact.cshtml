@@ -1,0 +1,114 @@
+﻿@using AddressBook.Extensions
+@model AddressBook.Models.Contact
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Contact</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AddressLine)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AddressLine)
+            @Html.ValidationMessageFor(model => model.AddressLine)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PostCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PostCode)
+            @Html.ValidationMessageFor(model => model.PostCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PhoneNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfBirth)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateOfBirth, new { @class = "date" })
+            @Html.ValidationMessageFor(model => model.DateOfBirth)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsFavorite)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsFavorite)
+            @Html.ValidationMessageFor(model => model.IsFavorite)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AssignedTo)
+        </div>
+        <div class="editor-field">
+            @Html.RadioButtonFor(model => model.AssignedTo, 1) Family
+            @Html.RadioButtonFor(model => model.AssignedTo, 2) Colleagues
+            @Html.RadioButtonFor(model => model.AssignedTo, 3) Friends
+            @Html.RadioButtonFor(model => model.AssignedTo, 0) Other
+            @Html.ValidationMessageFor(model => model.IsFavorite)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sex)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownListFor(model => model.Sex)
+        </div>
+        <div>
+            @Html.TextBox("aa", (DateTime.Now).ToString("dd/MM/yyyy"), new { @class = "date" })
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+
+    </fieldset>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/AddressBook/AddOrEditContact.js")
+}
