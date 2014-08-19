@@ -102,7 +102,7 @@
         </div>
         <div class="editor-field">
            
-            @Html.DropDownListFor(model => model.Sex, Model.Sex.ToSelectList())
+            @Html.DropDownListFor(model => model.Sex, SelectListItemsForHelper.SelectListItemsFor(Model.Sex))
         </div>
         <div>
             @Html.TextBox("aa", (DateTime.Now).ToString("yyyy/MM/dd"), new { @class = "date" })
