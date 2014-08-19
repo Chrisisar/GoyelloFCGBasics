@@ -2,3 +2,11 @@
 *.pdb
 bin
 obj
+/AddressBook/bin/*.pdb
+/AddressBook.Tests/*
+
+/AddressBook/bin
+/AddressBook.Tests/*
+/AddressBook.Tests/bin
+/AddressBook.Tests/obj
+
