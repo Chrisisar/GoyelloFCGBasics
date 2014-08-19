@@ -754,3 +754,18 @@ tr.pager td {
             margin: 0;
         }
 }
+
+.ui-dialog {
+    position: absolute;
+    top: -50px;
+
+    z-index: 1000;
+}
+
+/*.ui-dialog div .editor-field {
+    float: right;
+}
+
+.ui-dialog div .editor-label {
+    float: left;
+}*/

@@ -31,7 +31,7 @@ namespace AddressBook.Controllers
                 ContactList.AddressBook.Add(contact);
                 return RedirectToAction("ShowContactList");
             }
-            return View(contact);
+            return View();
         }
 
         public ActionResult EditContact(int ContactID)
