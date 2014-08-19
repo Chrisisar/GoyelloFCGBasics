@@ -758,10 +758,16 @@ tr.pager td {
 .ui-dialog {
     position: absolute;
     top: -50px;
-
+    width: 40%;
     z-index: 1000;
 }
 
+input[type="radio"] {
+    width: 20px;
+}
+#AddContactControlsTable td, #AddContactControlsTable th{
+    padding-right: 60px;
+}
 /*.ui-dialog div .editor-field {
     float: right;
 }
