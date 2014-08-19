@@ -72,7 +72,10 @@
             @Html.LabelFor(model => model.DateOfBirth)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DateOfBirth, new { @class = "date" })
+            @Html.TextBox("DateOfBirth-Day", null, new { type = "number", min = "1", max = "31", style = "width: 50px" })
+            @Html.TextBox("DateOfBirth-Month", null, new { type = "number", min = "1", max = "12", style = "width: 50px" })
+            @Html.TextBox("DateOfBirth-Year", null, new { type = "number", min = "1900", max = DateTime.Now.Year.ToString(), style = "width: 75px" })
+            @Html.Hidden("DateOfBirth", Model.DateOfBirth.ToShortDateString())
             @Html.ValidationMessageFor(model => model.DateOfBirth)
         </div>
 
@@ -88,21 +91,10 @@
             @Html.LabelFor(model => model.AssignedTo)
         </div>
         <div class="editor-field">
-            @foreach (Contact.Group group in Enum.GetValues(typeof(Contact.Group)))
-            {
-                if (group.ToString() != "Default")
-                {
-                <span>
-                    @Html.RadioButtonFor(model => model.AssignedTo, group) @group.ToString()
-                </span>      
-                }
-                else
-                {
-                <span>@Html.RadioButtonFor(model => model.AssignedTo, group) Other
-                </span>
-                }
-            }
-
+            @Html.RadioButtonFor(model => model.AssignedTo, "Family") Family
+            @Html.RadioButtonFor(model => model.AssignedTo, "Colleagues") Colleagues
+            @Html.RadioButtonFor(model => model.AssignedTo, "Friends") Friends
+            @Html.RadioButtonFor(model => model.AssignedTo, "Default") Other
             @Html.ValidationMessageFor(model => model.IsFavorite)
         </div>
         <div class="editor-label">
@@ -113,7 +105,7 @@
             @Html.DropDownListFor(model => model.Sex, Model.Sex.ToSelectList())
         </div>
         <div>
-            @Html.TextBox("aa", (DateTime.Now).ToString("dd/MM/yyyy"), new { @class = "date" })
+            @Html.TextBox("aa", (DateTime.Now).ToString("yyyy/MM/dd"), new { @class = "date" })
         </div>
         <p>
             <input type="submit" value="Create" />
