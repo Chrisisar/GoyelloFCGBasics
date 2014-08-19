@@ -1,0 +1,15 @@
+﻿@model AddressBook.Models.GridViewModel
+
+@{
+    ViewBag.Title = "Test";
+
+    var grid = new WebGrid(Model.Items, canPage: Model.CanPage, rowsPerPage: Model.RowsPerPage, 
+    selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+
+
+<div id="gridContent">
+    @grid.GetHtml(columns: Model.Columns)
+</div>
+<h2>Test</h2>

@@ -1,4 +1,6 @@
-﻿@using AddressBook.Extensions
+﻿@using System.Web.Razor.Parser.SyntaxTree
+@using AddressBook.Extensions
+@using AddressBook.Models
 @model AddressBook.Models.Contact
 
 
@@ -99,14 +101,13 @@
             @Html.LabelFor(model => model.Sex)
         </div>
         <div class="editor-field">
-            @Html.EnumDropDownListFor(model => model.Sex)
+           
+            @Html.DropDownListFor(model => model.Sex, SelectListItemsForHelper.SelectListItemsFor(Model.Sex))
         </div>
         <div>
             @Html.TextBox("aa", (DateTime.Now).ToString("yyyy/MM/dd"), new { @class = "date" })
         </div>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+    
 
     </fieldset>
 }
