@@ -2,6 +2,9 @@
 *.pdb
 bin
 obj
+<<<<<<< HEAD
+AddressBook.v11.suo
+=======
 /AddressBook/bin/*.pdb
 /AddressBook.Tests/*
 
@@ -10,3 +13,5 @@ obj
 /AddressBook.Tests/bin
 /AddressBook.Tests/obj
 
+>>>>>>> 24cefb3b0b754e234d0ad1a9fe00dad38c266889
+/*.suo
