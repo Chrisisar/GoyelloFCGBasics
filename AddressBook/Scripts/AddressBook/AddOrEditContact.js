@@ -1,6 +1,5 @@
 ﻿
 jQuery(document).ready(function () {
-    //jQuery('.date').datepicker({ dateFormat: "dd/mm/yy"});
 
     $.datepicker.setDefaults({ dateFormat: 'yy-mm-dd', maxDate: new Date() });
     console.log($(".date").datepicker("option", "minDate"));
@@ -13,9 +12,15 @@ jQuery(document).ready(function () {
     DateToTextBoxes();
 
     $("#DateOfBirth-Day").add("#DateOfBirth-Month").add("#DateOfBirth-Year").on('input', function () {
-        if ($("#DateOfBirth-Day").length == "1") {
+        console.log($("#DateOfBirth-Day").val().length);
+        if ($("#DateOfBirth-Day").val().length == "1") {
             $("#DateOfBirth-Day").val('0' + $("#DateOfBirth-Day").val());
         }
+
+        if ($("#DateOfBirth-Month").val().length == "1") {
+            $("#DateOfBirth-Month").val('0' + $("#DateOfBirth-Month").val());
+        }
+
         var $date = $("#DateOfBirth-Year").val() + '-' + $("#DateOfBirth-Month").val() + '-' + $("#DateOfBirth-Day").val();
         $("#DateOfBirth").val($date);
     });
