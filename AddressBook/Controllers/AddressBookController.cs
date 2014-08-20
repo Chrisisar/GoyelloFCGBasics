@@ -69,7 +69,20 @@ namespace AddressBook.Controllers
 
         public ActionResult RefreshContactList()
         {
-            return PartialView("_ContactListTable");
+            List<WebGridColumn> columns = new List<WebGridColumn>()
+            {
+                new WebGridColumn {ColumnName = "IsFavorite", Header = "Favorite?", Format = (item) => item.IsFavorite ? "☆" : String.Empty },
+                new WebGridColumn {ColumnName = "FirstName", Header = "First name"},
+                new WebGridColumn {ColumnName = "LastName", Header = "Last name"},
+                new WebGridColumn {ColumnName = "PhoneNumber", Header = "Phone number"},
+                new WebGridColumn {ColumnName = "Email", Header = "Email"},
+                new WebGridColumn {ColumnName = "Action", Header = "Action", Format = (item) => { return new MvcHtmlString(string.Format("<input type='button' id='Edit_{0}' class='editContactButton' data-id='{0}' value='Edit'><input type='button' id='Remove_{0}' class='removeContactButton' data-id='{0}' value='Remove'>", item.ContactID)); } 
+                }
+            };
+
+            GridViewModel gridModel = new GridViewModel { Columns = columns, Items = ContactList.AddressBook };
+
+            return PartialView("_ContactListTable", gridModel);
         }
 
         public ViewResult Test()
@@ -80,7 +93,9 @@ namespace AddressBook.Controllers
                 new WebGridColumn {ColumnName = "FirstName", Header = "First name"},
                 new WebGridColumn {ColumnName = "LastName", Header = "Last name"},
                 new WebGridColumn {ColumnName = "PhoneNumber", Header = "Phone number"},
-                new WebGridColumn {ColumnName = "Email", Header = "Email"}
+                new WebGridColumn {ColumnName = "Email", Header = "Email"},
+                new WebGridColumn {ColumnName = "Action", Header = "Action", Format = (item) => { return new MvcHtmlString(string.Format("<button id='Edit_{0}' class='editContactButton' data-id='{0}'>Edit</button><button data-id='{0}' class='RemoveContactButton'>Remove</button>", item.ContactID)); } 
+                }
             };
 
             GridViewModel gridModel = new GridViewModel { Columns = columns , Items = ContactList.AddressBook };

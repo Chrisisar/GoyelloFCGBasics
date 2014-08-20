@@ -1,5 +1,5 @@
 ﻿jQuery(document).ready(function () {
-
+    refreshContactList();
     $("#overlay").hide();
     $("#partialView").hide();
     $("#AddNewContactButton").on('click', function () {
@@ -16,21 +16,37 @@
         });
     });
 
-    $("#EditContactButton").on('click', function () {
-        var $data = $(this).parent().children("input[type='hidden']").val();
-        var partialView = $('<div id="partialView"></div>');
-        $.ajax({
-            url: '/AddressBook/EditContact',
-            data: "ContactID=" + $data,
-            contentType: 'application/html',
-            type: 'GET',
-            dataType: 'html'
-        }).success(function (result) {
 
-            partialView.append(result);
-            setupDialog(partialView);
+    function bindButtons() {
+        $(".editContactButton").on('click', function () {
+            var $data = $(this).attr('data-id');
+            var partialView = $('<div id="partialView"></div>');
+            $.ajax({
+                url: '/AddressBook/EditContact',
+                data: "ContactID=" + $data,
+                contentType: 'application/html',
+                type: 'GET',
+                dataType: 'html'
+            }).success(function (result) {
+
+                partialView.append(result);
+                setupDialog(partialView);
+            });
         });
-    });
+
+        $(".removeContactButton").on('click', function () {
+            var $data = $(this).attr('data-id');
+            $.ajax({
+                url: '/AddressBook/RemoveContact',
+                data: "ContactID=" + $data,
+                contentType: 'application/html',
+                type: 'GET',
+                dataType: 'html'
+            }).success(function () {
+                refreshContactList();
+            });
+        });
+    }
            
     function setupDialog(partialView) {
         $("#overlay").show();
@@ -62,7 +78,7 @@
                                 refreshContactList();
                             }
                         }
-                    })
+                    });
                 },
                 Cancel: function () {
                     partialView.dialog('close');
@@ -79,7 +95,11 @@
             type: 'GET',
             success: function (result) {
                 $("#contactListTable").html(result);
+                bindButtons();
+            },
+            error: function (result) {
+                alert("Error getting the list.");
             }
-        })
+        });
     }
 });

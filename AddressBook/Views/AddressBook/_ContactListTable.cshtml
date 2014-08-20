@@ -1,4 +1,4 @@
-﻿@using AddressBook.Models
+﻿@*@using AddressBook.Models
 @{
     Contact LabelMaker = new Contact();
 }
@@ -14,7 +14,7 @@
     @foreach (var contact in ContactList.AddressBook)
     {
         <tr data-contact="@contact.ContactID">
-            <td id="IsFavorite">
+            <td class="IsFavorite">
                 @if (contact.IsFavorite)
                 {
                     @:☆
@@ -24,10 +24,24 @@
             <td>@contact.LastName</td>
             <td>@contact.PhoneNumber</td>
             <td>@contact.Email</td>
-            <td><input type="button" value="Edit" id="EditContactButton"/>
+            <td><input type="button" value="Edit" class="EditContactButton"/>
                 <input type="hidden" value="@contact.ContactID" id="ContactId"/>
             </td>
             <td>@Html.ActionLink("Remove", "RemoveContact", new { ContactID = contact.ContactID })</td>
         </tr>
     }
-</table>
+</table>*@
+@model AddressBook.Models.GridViewModel
+
+@{
+    ViewBag.Title = "ContactListTable";
+
+    var grid = new WebGrid(Model.Items, canPage: Model.CanPage, rowsPerPage: Model.RowsPerPage, 
+    selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+
+
+<div id="gridContent">
+    @grid.GetHtml(columns: Model.Columns )
+</div>

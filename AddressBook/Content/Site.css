@@ -782,3 +782,24 @@ input[type="radio"] {
     border-radius: 20px;
     border: solid 20px #efeeef;
 }
+#gridContent td{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:groove;
+    text-align: center;
+    width:inherit;
+    padding: 0;
+}
+#gridContent table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:groove;
+    padding: 0;
+}
+#gridContent th {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:groove;
+    padding: 0px 3px;
+    background-color: #a6dbed;
+}
