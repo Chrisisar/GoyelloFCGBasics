@@ -79,7 +79,7 @@ namespace AddressBook.Controllers
                 new WebGridColumn {ColumnName = "Email", Header = "Email"}
             };
 
-            GridViewModel gridModel = new GridViewModel { Columns = columns , Items = ContactList.AddressBook};
+            GridViewModel gridModel = new GridViewModel { Columns = columns , Items = ContactList.AddressBook };
 
             return View(gridModel);
         }

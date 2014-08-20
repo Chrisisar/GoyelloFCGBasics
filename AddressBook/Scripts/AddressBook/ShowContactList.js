@@ -48,7 +48,7 @@
             'open': function () { $(this).dialog('option', 'width', this.scrollWidth); }
         });
         $("#partialView").dialog("option", "position", "center");
-		$("#partialView").show()
+        $("#partialView").show();
         addCloseDialogButtonHandler();
     };
 });
