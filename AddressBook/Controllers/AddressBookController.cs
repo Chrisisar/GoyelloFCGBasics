@@ -72,8 +72,11 @@ namespace AddressBook.Controllers
         {
             List<WebGridColumn> columns = new List<WebGridColumn>()
             {
+                new WebGridColumn {ColumnName = "IsFavorite", Header = "Favorite?", Format = (item) => item.IsFavorite ? "☆" : String.Empty },
                 new WebGridColumn {ColumnName = "FirstName", Header = "First name"},
-                new WebGridColumn {ColumnName = "LastName", Header = "Last name"} 
+                new WebGridColumn {ColumnName = "LastName", Header = "Last name"},
+                new WebGridColumn {ColumnName = "PhoneNumber", Header = "Phone number"},
+                new WebGridColumn {ColumnName = "Email", Header = "Email"}
             };
 
             GridViewModel gridModel = new GridViewModel { Columns = columns , Items = ContactList.AddressBook};
