@@ -64,8 +64,12 @@ namespace AddressBook.Controllers
 
         public ViewResult ShowContactList()
         {
-            
-            return View(ContactList.AddressBook);
+            return View();
+        }
+
+        public ActionResult RefreshContactList()
+        {
+            return PartialView("_ContactListTable");
         }
 
         public ViewResult Test()

@@ -1,39 +1,13 @@
-﻿@using AddressBook.Models;
-@{
+﻿@{
     ViewBag.Title = "ShowContactList";
-    Contact LabelMaker = new Contact();
 }
 
 <h2>ShowContactList</h2>
 
-<table>
-    <tr>
-        <th>@Html.LabelFor(m => LabelMaker.IsFavorite)</th>
-        <th>@Html.LabelFor(m => LabelMaker.FirstName)</th>
-        <th>@Html.LabelFor(m => LabelMaker.LastName)</th>
-        <th>@Html.LabelFor(m => LabelMaker.PhoneNumber)</th>
-        <th>@Html.LabelFor(m => LabelMaker.Email)</th>
-    </tr>
-    @foreach (var contact in ContactList.AddressBook)
-    {
-        <tr data-contact="@contact.ContactID">
-            <td id="IsFavorite">
-                @if (contact.IsFavorite)
-                {
-                    @:☆
-                }
-            </td>
-            <td>@contact.FirstName</td>
-            <td>@contact.LastName</td>
-            <td>@contact.PhoneNumber</td>
-            <td>@contact.Email</td>
-            <td><input type="button" value="Edit" id="EditContactButton"/>
-                <input type="hidden" value="@contact.ContactID" id="ContactId"/>
-            </td>
-            <td>@Html.ActionLink("Remove", "RemoveContact", new { ContactID = contact.ContactID })</td>
-        </tr>
-    }
-</table>
+<div id="contactListTable">
+    @Html.Partial("_ContactListTable")
+</div>
+
 <div>
     <input type="button" value ="Add new contact" id="AddNewContactButton"/>
 </div>

@@ -18,7 +18,7 @@
 
     $("#EditContactButton").on('click', function () {
         var $data = $(this).parent().children("input[type='hidden']").val();
-
+        var partialView = $('<div id="partialView"></div>');
         $.ajax({
             url: '/AddressBook/EditContact',
             data: "ContactID=" + $data,
@@ -27,8 +27,8 @@
             dataType: 'html'
         }).success(function (result) {
 
-            $("#partialView").html(result);
-            setupDialog();
+            partialView.append(result);
+            setupDialog(partialView);
         });
     });
            
@@ -59,7 +59,7 @@
                                 partialView.html(result);
                             } else {
                                 partialView.dialog('close');
-
+                                refreshContactList();
                             }
                         }
                     })
@@ -74,6 +74,12 @@
     };
 
     function refreshContactList() {
-
+        $.ajax({
+            url: '/AddressBook/RefreshContactList',
+            type: 'GET',
+            success: function (result) {
+                $("#contactListTable").html(result);
+            }
+        })
     }
 });

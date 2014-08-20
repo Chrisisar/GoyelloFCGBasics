@@ -294,6 +294,7 @@
     <Content Include="Views\AddressBook\Test.cshtml" />
     <Content Include="Views\AddressBook\_AddOrEditContact.cshtml" />
     <Content Include="Views\Shared\_AddOrEditLayout.cshtml" />
+    <Content Include="Views\AddressBook\_ContactListTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
