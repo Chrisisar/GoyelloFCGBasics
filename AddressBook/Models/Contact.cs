@@ -26,40 +26,26 @@ namespace AddressBook.Models
 
         public int ContactID { get; set; }
 
-        [Required(ErrorMessage="Name is required")]
-        [DisplayName("First Name")]
         public string FirstName { get; set; }
 
-        [DisplayName("Last Name")]
         public string LastName { get; set; }
 
-        [DisplayName("Address")]
         public string AddressLine { get; set; }
 
-        [DisplayName("City")]
         public string City { get; set; }
 
-        [DisplayName("Postcode")]
         public string PostCode { get; set; }
 
-        [DisplayName("Phone Number")]
         public string PhoneNumber { get; set; }
 
-        [DisplayName("Email")]
         public string Email { get; set; }
 
-        [DisplayName("Date of Birth")]
-        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
-        [DisplayName("Favorite")]
         public bool IsFavorite { get; set; }
 
-        [Required()]
-        [DisplayName("Group")]
         public Group AssignedTo { get; set; }
 
-        [Required(ErrorMessage = "You need to specify the person's sex")]
         public Gender Sex { get; set; }
 
         public Contact()
