@@ -1,16 +1,18 @@
 ﻿jQuery(document).ready(function () {
 
     $("#overlay").hide();
+    $("#partialView").hide();
     $("#AddNewContactButton").on('click', function () {
+        var partialView = $('<div id="partialView"></div>');
         $.ajax({
             url: '/AddressBook/AddNewContact',
             contentType: 'application/html',
             type: 'GET',
             dataType: 'html'
         }).success(function (result) {
-
-            $("#partialView").html(result);
-            setupDialog();
+           
+            partialView.append(result);
+            setupDialog(partialView);
         });
     });
 
@@ -29,26 +31,48 @@
             setupDialog();
         });
     });
-
-    function addCloseDialogButtonHandler() {
-        $("#CloseDialogButton").on('click', function() {
-            $("#partialView").dialog('close');
-            $("#overlay").hide();
-        });
-    };
-
-    function setupDialog() {
+           
+    function setupDialog(partialView) {
         $("#overlay").show();
-        $("#partialView").dialog(
+        partialView.dialog(
         {
             autoResize: true,
             height: 'auto',
             position: top,
             modal: true,
-            'open': function () { $(this).dialog('option', 'width', this.scrollWidth); }
+            'open': function () {
+                partialView.dialog('option', 'width', this.scrollWidth);
+            },
+            'close': function () {
+                $("#overlay").hide();
+                partialView.dialog().remove();
+            },
+            buttons: {
+                Confirm: function () {
+                    $.ajax({
+                        url: '/AddressBook/AddNewContact',
+                        type: 'POST',
+                        data: $("#ContactForm").serialize(),
+                        success: function (result) {
+                            if (!result.Success) {
+                                partialView.html(result);
+                            } else {
+                                partialView.dialog('close');
+
+                            }
+                        }
+                    })
+                },
+                Cancel: function () {
+                    partialView.dialog('close');
+                }
+            }
         });
-        $("#partialView").dialog("option", "position", "center");
-        $("#partialView").show();
-        addCloseDialogButtonHandler();
+        partialView.dialog("option", "position", "center");
+        partialView.show();
     };
+
+    function refreshContactList() {
+
+    }
 });

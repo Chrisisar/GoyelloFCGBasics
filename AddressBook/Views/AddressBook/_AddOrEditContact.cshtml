@@ -3,7 +3,7 @@
 @using AddressBook.Models
 @model AddressBook.Models.Contact
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Get, new { id = "ContactForm" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -95,11 +95,6 @@
                 </td>
             </tr>
         </table>
-
-        <div>
-            @Html.TextBox("aa", (DateTime.Now).ToString("yyyy/MM/dd"), new { @class = "date" })
-        </div>
-
         <table id="AddContactControlsTable">
             <tr>
                 <th>
@@ -122,8 +117,6 @@
                 <td>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.IsFavorite)
-                        @Html.ValidationMessageFor(model => model.IsFavorite)
-                        @Html.ValidationMessageFor(model => model.IsFavorite)
                     </div>
                 </td>
                 <td>
@@ -154,9 +147,16 @@
                 </td>
             </tr>
         </table>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div id="ValidationPopup" hidden="hidden">
+            @Html.ValidationMessageFor(model => model.FirstName)<br/>
+            @Html.ValidationMessageFor(model => model.LastName)<br/>
+            @Html.ValidationMessageFor(model => model.AddressLine)<br/>
+            @Html.ValidationMessageFor(model => model.Email)<br/>
+            @Html.ValidationMessageFor(model => model.City)<br/>
+            @Html.ValidationMessageFor(model => model.PhoneNumber)<br/>
+            @Html.ValidationMessageFor(model => model.PostCode)<br/>
+            @Html.ValidationMessageFor(model => model.DateOfBirth)<br/>
+        </div>
 
     </fieldset>
 }
