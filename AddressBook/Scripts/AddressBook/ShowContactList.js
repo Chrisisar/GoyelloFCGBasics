@@ -34,6 +34,7 @@
            
     function setupDialog(partialView) {
         $("#overlay").show();
+
         partialView.dialog(
         {
             autoResize: true,
