@@ -27,7 +27,9 @@
             <td>@contact.LastName</td>
             <td>@contact.PhoneNumber</td>
             <td>@contact.Email</td>
-            <td>@Html.ActionLink("Edit", "EditContact", new { ContactID = contact.ContactID })</td>
+            <td><input type="button" value="Edit" id="EditContactButton"/>
+                <input type="hidden" value="@contact.ContactID" id="ContactId"/>
+            </td>
             <td>@Html.ActionLink("Remove", "RemoveContact", new { ContactID = contact.ContactID })</td>
         </tr>
     }
@@ -35,8 +37,6 @@
 <div>
     <input type="button" value ="Add new contact" id="AddNewContactButton"/>
 </div>
-
-<div id="partialView"></div>
 
 <div id="overlay"></div>
 @Scripts.Render("~/bundles/jquery")

@@ -29,7 +29,7 @@ namespace AddressBook.Controllers
             if (ModelState.IsValid)
             {
                 ContactList.AddressBook.Add(contact);
-                return RedirectToAction("ShowContactList");
+                return Json(new { Success = true });
             }
             return View(contact);
         }

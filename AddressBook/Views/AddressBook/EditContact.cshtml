@@ -1,16 +1,11 @@
 ﻿@model AddressBook.Models.Contact
 
 @{
-    ViewBag.Title = "EditContact";
+    ViewBag.Title = "Edit contact";
+    Layout = "~/Views/Shared/_AddOrEditLayout.cshtml";
 }
 
-<h2>EditContact</h2>
-
 @Html.Partial("_AddOrEditContact", Model)
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
