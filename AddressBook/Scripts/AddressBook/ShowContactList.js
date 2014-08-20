@@ -19,6 +19,7 @@
                 modal: true,
                 'open': function () { $(this).dialog('option', 'width', this.scrollWidth); }
             });
+            $("#partialView").dialog("option", "position", "center");
         });
     });
 });
