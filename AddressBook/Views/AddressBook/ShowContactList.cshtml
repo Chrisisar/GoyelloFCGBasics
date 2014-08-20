@@ -34,11 +34,11 @@
     }
 </table>
 <div>
-    @Html.ActionLink("Add new contact", "AddNewContact")
     <input type="button" value ="Add new contact" id="AddNewContactButton"/>
 </div>
 
+<div id="partialView"></div>
 
-<div class="partialView"></div>
+<div id="overlay"></div>
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/Scripts/AddressBook/ShowContactList.js")

@@ -4,13 +4,13 @@
     ViewBag.Title = "AddNewContact";
 }
 
+@{
+    Layout = "~/Views/Shared/_AddOrEditLayout.cshtml";
+}
 <h2>AddNewContact</h2>
 
 @Html.Partial("_AddOrEditContact", Model)
 
-<p>
-    <input type="submit" value="Create" />
-</p>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
