@@ -779,12 +779,6 @@ input[type="radio"] {
 }
 
 #partialView #body {
-    top: -50px;
     border-radius: 20px;
     border: solid 20px #efeeef;
-    padding-top: -50px;
 }
-
-/*#partialView h2 {
-    top: -120px;
-}*/
