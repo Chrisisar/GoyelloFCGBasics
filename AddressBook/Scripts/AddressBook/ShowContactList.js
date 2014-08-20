@@ -1,5 +1,6 @@
 ﻿jQuery(document).ready(function () {
 
+    $("#overlay").hide();
     $("#AddNewContactButton").on('click', function () {
         $.ajax({
             url: '/AddressBook/AddNewContact',
@@ -9,21 +10,15 @@
         }).success(function (result) {
            
             $("#partialView").html(result);
-            $("#partialView").css("border", "solid 8px black");
+            $("#overlay").show();
             jQuery("#partialView").dialog(
             {
-                width: 1000,
-                height: 400,
+                autoResize: true,
+                height: 'auto',
                 position: top,
                 modal: true,
-                overlay: {
-                    opacity: 0.5
-                }
+                'open': function () { $(this).dialog('option', 'width', this.scrollWidth); }
             });
         });
-
-
     });
-
-
 });

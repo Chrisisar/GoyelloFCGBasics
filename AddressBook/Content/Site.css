@@ -755,23 +755,34 @@ tr.pager td {
         }
 }
 
-.ui-dialog {
-    position: absolute;
-    top: -50px;
-    width: 40%;
-    z-index: 1000;
-}
-
 input[type="radio"] {
     width: 20px;
 }
 #AddContactControlsTable td, #AddContactControlsTable th{
     padding-right: 60px;
 }
-/*.ui-dialog div .editor-field {
-    float: right;
+
+.ui-dialog-titlebar-close {
+  display: none;
 }
 
-.ui-dialog div .editor-label {
+#overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.ui-dialog-content {
+    border-radius: 5px;
+    border: solid 5px #000000;
+}
+
+.ui-dialog {
     float: left;
-}*/
+    left: -1000px;
+}
