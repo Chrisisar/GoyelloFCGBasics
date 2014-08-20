@@ -9,16 +9,22 @@
             dataType: 'html'
         }).success(function (result) {
            
-            $("#partialView").html(result);
+           
             $("#overlay").show();
+            $("#partialView").hide();
+            $("#partialView").html(result);
             jQuery("#partialView").dialog(
             {
                 autoResize: true,
                 height: 'auto',
-                position: top,
+                position: 'middle',
+                center: true,
                 modal: true,
-                'open': function () { $(this).dialog('option', 'width', this.scrollWidth); }
+                'open': function () { $(this).dialog('option', 'width', this.scrollWidth);
+                },
+                'close': $("#overlay").hide()
             });
+            $("#partialView").show();
         });
     });
 });

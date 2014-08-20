@@ -14,15 +14,15 @@ namespace AddressBook.MetaData
         [Required()]
         public int ContactID { get; set; }
 
-        [Required(ErrorMessage="Name is required")]
+        [Required(ErrorMessage="First name is required")]
         [DisplayName("First Name")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "")]
+        [Required(ErrorMessage = "Last name is required")]
         [DisplayName("Last Name")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "")]
+        [Required(ErrorMessage = "Address line is required")]
         [DisplayName("Address")]
         public string AddressLine { get; set; }
 

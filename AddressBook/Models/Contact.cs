@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AddressBook.MetaData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -8,6 +9,7 @@ using System.Web;
 
 namespace AddressBook.Models
 {
+    [MetadataType(typeof(ContactMetaData))]
     public class Contact
     {
         public enum Group {

@@ -11,102 +11,152 @@
 
     <fieldset>
         <legend>Contact</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FirstName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.LastName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.AddressLine)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.AddressLine)
-            @Html.ValidationMessageFor(model => model.AddressLine)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.City)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.City)
-            @Html.ValidationMessageFor(model => model.City)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PostCode)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PostCode)
-            @Html.ValidationMessageFor(model => model.PostCode)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PhoneNumber)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PhoneNumber)
-            @Html.ValidationMessageFor(model => model.PhoneNumber)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DateOfBirth)
-        </div>
-        <div class="editor-field">
-            @Html.TextBox("DateOfBirth-Day", null, new { type = "number", min = "1", max = "31", style = "width: 50px" })
-            @Html.TextBox("DateOfBirth-Month", null, new { type = "number", min = "1", max = "12", style = "width: 50px" })
-            @Html.TextBox("DateOfBirth-Year", null, new { type = "number", min = "1900", max = DateTime.Now.Year.ToString(), style = "width: 75px" })
-            @Html.Hidden("DateOfBirth", Model.DateOfBirth.ToShortDateString())
-            @Html.ValidationMessageFor(model => model.DateOfBirth)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.IsFavorite)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IsFavorite)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.AssignedTo)
-        </div>
-        <div class="editor-field">
-            @Html.RadioButtonFor(model => model.AssignedTo, "Family") Family
-            @Html.RadioButtonFor(model => model.AssignedTo, "Colleagues") Colleagues
-            @Html.RadioButtonFor(model => model.AssignedTo, "Friends") Friends
-            @Html.RadioButtonFor(model => model.AssignedTo, "Default") Other
-            @Html.ValidationMessageFor(model => model.IsFavorite)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Sex)
-        </div>
-        <div class="editor-field">
-           
-            @Html.DropDownListFor(model => model.Sex, SelectListItemsForHelper.SelectListItemsFor(Model.Sex))
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.FirstName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FirstName)
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.LastName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.LastName)
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.AddressLine)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.AddressLine)
+                        @Html.ValidationMessageFor(model => model.AddressLine)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Email)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Email)
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.City)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.City)
+                        @Html.ValidationMessageFor(model => model.City)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.PhoneNumber)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.PhoneNumber)
+                        @Html.ValidationMessageFor(model => model.PhoneNumber)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.PostCode)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.PostCode)
+                        @Html.ValidationMessageFor(model => model.PostCode)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.DateOfBirth)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBox("DateOfBirth-Day", null, new { type = "number", min = "1", max = "31", style = "width: 50px" })
+                        @Html.TextBox("DateOfBirth-Month", null, new { type = "number", min = "1", max = "12", style = "width: 50px" })
+                        @Html.TextBox("DateOfBirth-Year", null, new { type = "number", min = "1900", max = DateTime.Now.Year.ToString(), style = "width: 75px" })
+                        @Html.Hidden("DateOfBirth", Model.DateOfBirth.ToShortDateString())
+                        @Html.ValidationMessageFor(model => model.DateOfBirth)
+                    </div>
+                </td>
+            </tr>
+        </table>
         <div>
             @Html.TextBox("aa", (DateTime.Now).ToString("yyyy/MM/dd"), new { @class = "date" })
         </div>
-    
+
+        <table id="AddContactControlsTable">
+            <tr>
+                <th>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.IsFavorite)
+                    </div>
+                </th>
+                <th>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.AssignedTo)
+                    </div>
+                </th>
+                <th>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Sex)
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.IsFavorite)
+                        @Html.ValidationMessageFor(model => model.IsFavorite)
+                        @Html.ValidationMessageFor(model => model.IsFavorite)
+                    </div>
+                </td>
+                <td>
+                    @Html.RadioButtonFor(model => model.AssignedTo, "Family") Family
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.Sex, SelectListItemsForHelper.SelectListItemsFor(Model.Sex))
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.RadioButtonFor(model => model.AssignedTo, "Colleagues") Colleagues
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.RadioButtonFor(model => model.AssignedTo, "Friends") Friends
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.RadioButtonFor(model => model.AssignedTo, "Default") Other
+                </td>
+            </tr>
+        </table>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
 
     </fieldset>
 }
