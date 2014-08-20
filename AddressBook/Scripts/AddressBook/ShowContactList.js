@@ -22,7 +22,19 @@
                 modal: true,
                 'open': function () { $(this).dialog('option', 'width', this.scrollWidth);
                 },
-                'close': $("#overlay").hide()
+                'close': $("#overlay").hide(),
+                buttons: {
+                    Add: function () {
+                        $.ajax({
+                            url: '/AddressBook/AddNewContact',
+                            type: 'POST',
+                            data: $("#ContactForm").serialize()
+                        })
+                    },
+                    Cancel: function () {
+                        $("#partialView").dialog('close');
+                    }
+                }
             });
             $("#partialView").show();
         });
