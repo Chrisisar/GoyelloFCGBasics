@@ -15,6 +15,10 @@ namespace AddressBook.Controllers
 
         public ActionResult Index()
         {
+            for(int i=0;i!=10;i++)
+            {
+                ContactList.AddressBook.Add(new Contact() { FirstName = "1", AddressLine = "1", City = "1", Email = "1", LastName = "1", PhoneNumber = "123", PostCode = "123", Sex = Contact.Gender.Male });
+            }
             return RedirectToAction("ShowContactList");
         }
 
@@ -76,7 +80,7 @@ namespace AddressBook.Controllers
                 new WebGridColumn {ColumnName = "LastName", Header = "Last name"},
                 new WebGridColumn {ColumnName = "PhoneNumber", Header = "Phone number"},
                 new WebGridColumn {ColumnName = "Email", Header = "Email"},
-                new WebGridColumn {ColumnName = "Action", Header = "Action", Format = (item) => { return new MvcHtmlString(string.Format("<input type='button' id='Edit_{0}' class='editContactButton' data-id='{0}' value='Edit'><input type='button' id='Remove_{0}' class='removeContactButton' data-id='{0}' value='Remove'>", item.ContactID)); } 
+                new WebGridColumn {ColumnName = "Action", Header = "Action", Format = (item) => { return new MvcHtmlString(string.Format("<input type='button' id='Edit_{0}' class='editContactButton' data-id='{0}' value='Edit' onclick='EditContact({0});'><input type='button' id='Remove_{0}' class='removeContactButton' data-id='{0}' value='Remove' onclick='RemoveContact({0});'>", item.ContactID)); } 
                 }
             };
 
