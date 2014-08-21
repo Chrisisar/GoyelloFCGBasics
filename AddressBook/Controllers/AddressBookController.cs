@@ -45,7 +45,7 @@ namespace AddressBook.Controllers
             if (ModelState.IsValid)
             {
                 ContactList.AddressBook[ContactList.AddressBook.FindIndex(m => m.ContactID == contact.ContactID)] = contact;
-                return RedirectToAction("ShowContactList");
+                return Json(new { Success = true });
             }
             return View(contact);
         }

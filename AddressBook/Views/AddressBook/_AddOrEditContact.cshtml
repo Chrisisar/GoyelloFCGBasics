@@ -146,6 +146,7 @@
                     @Html.RadioButtonFor(model => model.AssignedTo, "Default") Other
                 </td>
             </tr>
+            @Html.HiddenFor(model => model.ContactID)
         </table>
         <div id="ValidationPopup" hidden="hidden">
             @Html.ValidationMessageFor(model => model.FirstName)<br/>

@@ -4,15 +4,16 @@
     $("#partialView").hide();
     $("#AddNewContactButton").on('click', function () {
         var partialView = $('<div id="partialView"></div>');
+        var operationUrl = '/AddressBook/AddNewContact';
         $.ajax({
-            url: '/AddressBook/AddNewContact',
+            url: operationUrl,
             contentType: 'application/html',
             type: 'GET',
             dataType: 'html'
         }).success(function (result) {
            
             partialView.append(result);
-            setupDialog(partialView);
+            setupDialog(partialView, operationUrl);
         });
     });
 
@@ -21,8 +22,9 @@
         $(".editContactButton").on('click', function () {
             var $data = $(this).attr('data-id');
             var partialView = $('<div id="partialView"></div>');
+            var operationUrl = '/AddressBook/EditContact';
             $.ajax({
-                url: '/AddressBook/EditContact',
+                url: operationUrl,
                 data: "ContactID=" + $data,
                 contentType: 'application/html',
                 type: 'GET',
@@ -30,14 +32,15 @@
             }).success(function (result) {
 
                 partialView.append(result);
-                setupDialog(partialView);
+                setupDialog(partialView, operationUrl);
             });
         });
 
         $(".removeContactButton").on('click', function () {
             var $data = $(this).attr('data-id');
+            var operationUrl = '/AddressBook/RemoveContact';
             $.ajax({
-                url: '/AddressBook/RemoveContact',
+                url: operationUrl,
                 data: "ContactID=" + $data,
                 contentType: 'application/html',
                 type: 'GET',
@@ -48,7 +51,7 @@
         });
     }
            
-    function setupDialog(partialView) {
+    function setupDialog(partialView, operationUrl) {
         $("#overlay").show();
 
         partialView.dialog(
@@ -67,7 +70,7 @@
             buttons: {
                 Confirm: function () {
                     $.ajax({
-                        url: '/AddressBook/AddNewContact',
+                        url: operationUrl,
                         type: 'POST',
                         data: $("#ContactForm").serialize(),
                         success: function (result) {
