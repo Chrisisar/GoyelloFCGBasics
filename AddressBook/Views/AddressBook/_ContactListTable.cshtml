@@ -1,4 +1,5 @@
-﻿@model AddressBook.Models.GridViewModel
+﻿
+@model AddressBook.Models.GridViewModel
 
 @{
     ViewBag.Title = "ContactListTable";
@@ -7,6 +8,7 @@
     selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
     grid.Pager(WebGridPagerModes.NextPrevious);
 }
+
 
 <div id="gridContent">
     @grid.GetHtml(columns: Model.Columns )

@@ -80,7 +80,7 @@ namespace AddressBook.Controllers
                 new WebGridColumn {ColumnName = "LastName", Header = "Last name"},
                 new WebGridColumn {ColumnName = "PhoneNumber", Header = "Phone number"},
                 new WebGridColumn {ColumnName = "Email", Header = "Email"},
-                new WebGridColumn {ColumnName = "Action", Header = "Action", Format = (item) => { return new MvcHtmlString(string.Format("<input type='button' id='Edit_{0}' class='editContactButton' data-id='{0}' value='Edit' onclick='EditContact({0});'><input type='button' id='Remove_{0}' class='removeContactButton' data-id='{0}' value='Remove' onclick='RemoveContact({0});'>", item.ContactID)); } 
+                new WebGridColumn {ColumnName = "Action", Header = "Action", Format = (item) => { return new MvcHtmlString(string.Format("<input type='button' id='Edit_{0}' class='editContactButton' data-id='{0}' value='Edit'><input type='button' id='Remove_{0}' class='removeContactButton' data-id='{0}' value='Remove'>", item.ContactID)); } 
                 }
             };
 

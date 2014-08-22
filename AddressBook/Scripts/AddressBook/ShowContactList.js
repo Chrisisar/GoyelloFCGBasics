@@ -1,89 +1,112 @@
-﻿window.setupDialog = function(partialView, operationUrl) {
-    $("#overlay").show();
+﻿var ContactList = (function () {
 
-    partialView.dialog(
-    {
-        autoResize: true,
-        height: 'auto',
-        position: top,
-        modal: true,
-        'open': function () {
-            partialView.dialog('option', 'width', this.scrollWidth);
-        },
-        'close': function () {
-            $("#overlay").hide();
-            partialView.dialog().remove();
-        },
-        buttons: {
-            Confirm: function () {
-                $.ajax({
-                    url: operationUrl,
-                    type: 'POST',
-                    data: $("#ContactForm").serialize(),
-                    success: function (result) {
-                        if (!result.Success) {
-                            partialView.html(result);
-                        } else {
-                            partialView.dialog('close');
-                            refreshContactList();
-                        }
-                    }
-                });
+    var removeContact = function (id) {
+        var operationUrl = '/AddressBook/RemoveContact';
+        $.ajax({
+            url: operationUrl,
+            data: "ContactID=" + id,
+            contentType: 'application/html',
+            type: 'GET',
+            dataType: 'html'
+        }).success(function () {
+            refreshContactList();
+        });
+    }
+
+    var refreshContactList = function () {
+        $.ajax({
+            url: '/AddressBook/RefreshContactList',
+            type: 'GET',
+            success: function (result) {
+                $("#contactListTable").html(result);
+                bindButtons();
             },
-            Cancel: function () {
-                partialView.dialog('close');
+            error: function (result) {
+                alert("Error getting the list.");
             }
-        }
-    });
-    partialView.dialog("option", "position", "center");
-    partialView.show();
-};
+        });
+    }
 
-window.refreshContactList = function() {
-    $.ajax({
-        url: '/AddressBook/RefreshContactList',
-        type: 'GET',
-        success: function (result) {
-            $("#contactListTable").html(result);
-            bindButtons();
-        },
-        error: function (result) {
-            alert("Error getting the list.");
-        }
-    });
-}
+    var setupDialog = function (partialView, operationUrl) {
+        $("#overlay").show();
 
-window.EditContact = function (id) {
-    var partialView = $('<div id="partialView"></div>');
-    var operationUrl = '/AddressBook/EditContact';
-    $.ajax({
-        url: operationUrl,
-        data: "ContactID=" + id,
-        contentType: 'application/html',
-        type: 'GET',
-        dataType: 'html'
-    }).success(function (result) {
+        partialView.dialog(
+        {
+            autoResize: true,
+            height: 'auto',
+            position: top,
+            modal: true,
+            'open': function () {
+                partialView.dialog('option', 'width', this.scrollWidth);
+            },
+            'close': function () {
+                $("#overlay").hide();
+                partialView.dialog().remove();
+            },
+            buttons: {
+                Confirm: function () {
+                    $.ajax({
+                        url: operationUrl,
+                        type: 'POST',
+                        data: $("#ContactForm").serialize(),
+                        success: function (result) {
+                            if (!result.Success) {
+                                partialView.html(result);
+                            } else {
+                                partialView.dialog('close');
+                                refreshContactList();
+                            }
+                        }
+                    });
+                },
+                Cancel: function () {
+                    partialView.dialog('close');
+                }
+            }
+        });
+        partialView.dialog("option", "position", "center");
+        partialView.show();
+    }
 
-        partialView.append(result);
-        setupDialog(partialView, operationUrl);
-    });
-}
+    var editContact = function (id) {
+        var partialView = $('<div id="partialView"></div>');
+        var operationUrl = '/AddressBook/EditContact';
+        $.ajax({
+            url: operationUrl,
+            data: "ContactID=" + id,
+            contentType: 'application/html',
+            type: 'GET',
+            dataType: 'html'
+        }).success(function (result) {
 
-window.RemoveContact = function(id) {
-    var operationUrl = '/AddressBook/RemoveContact';
-    $.ajax({
-        url: operationUrl,
-        data: "ContactID=" + id,
-        contentType: 'application/html',
-        type: 'GET',
-        dataType: 'html'
-    }).success(function () {
-        refreshContactList();
-    });
-}
+            partialView.append(result);
+            setupDialog(partialView, operationUrl);
+        });
+    }
+
+    var bindButtons = function() {
+        var editButtons = $(".editContactButton");
+        editButtons.each().on('click', function() {
+            var itemId = $(this).attr('data-id');
+            editContact(itemId);
+        });
+
+        var removeButtons = $(".removeContactButton");
+        removeButtons.each().on('click', function () {
+            var itemId = $(this).attr('data-id');
+            removeContact(itemId);
+        });
+    }
+    return {
+        EditContact: editContact,
+        RemoveContact: removeContact,
+        RefreshContactList: refreshContactList,
+        SetupDialog: setupDialog
+    };
+})();
 
 jQuery(document).ready(function () {
-    refreshContactList();
+    ContactList.RefreshContactList();
     $("#overlay").hide();
     $("#partialView").hide();
     $("#AddNewContactButton").on('click', function () {
@@ -95,18 +118,9 @@ jQuery(document).ready(function () {
             type: 'GET',
             dataType: 'html'
         }).success(function (result) {
-           
+
             partialView.append(result);
-            setupDialog(partialView, operationUrl);
+            ContactList.SetupDialog(partialView, operationUrl);
         });
     });
-
-
-    function bindButtons() {
-        //$(".editContactButton").on('click', EditContact());
-
-        //$(".removeContactButton").on('click', RemoveContact());
-    }
-           
-    
 });
