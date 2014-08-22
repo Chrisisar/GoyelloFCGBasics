@@ -15,9 +15,9 @@ namespace AddressBook.Controllers
 
         public ActionResult Index()
         {
-            for(int i=0;i!=10;i++)
+            for (int i = 0; i <= 15; i++)
             {
-                ContactList.AddressBook.Add(new Contact() { FirstName = "1", AddressLine = "1", City = "1", Email = "1", LastName = "1", PhoneNumber = "123", PostCode = "123", Sex = Contact.Gender.Male });
+                ContactList.AddressBook.Add(new Contact() { FirstName = i.ToString(), AddressLine = "1", City = "1", Email = "1", LastName = "1", PhoneNumber = "123", PostCode = "123", Sex = Contact.Gender.Male });
             }
             return RedirectToAction("ShowContactList");
         }

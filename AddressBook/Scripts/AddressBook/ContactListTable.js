@@ -1,4 +1,31 @@
-﻿var ContactList = (function () {
+﻿var ContactListTable = (function ($) {
+    var self = this;
+
+
+    function SetupPage() {
+        self.ajaxRefreshContact = '/AddressBook/RefreshContactList';
+
+        refreshContactList();
+        $("#contactListTable").ajaxComplete(bindButtons);
+        $("#overlay").hide();
+        $("#partialView").hide();
+
+        $("#AddNewContactButton").click(function () {
+            var partialView = $('<div id="partialView"></div>');
+            var operationUrl = '/AddressBook/AddNewContact';
+            $.ajax({
+                url: operationUrl,
+                contentType: 'application/html',
+                type: 'GET',
+                dataType: 'html'
+            }).success(function (result) {
+                partialView.append(result);
+                setupDialog(partialView, operationUrl);
+            });
+        });
+    }
+
+    SetupPage();
 
     var removeContact = function (id) {
         var operationUrl = '/AddressBook/RemoveContact';
@@ -13,9 +40,9 @@
         });
     }
 
-    var refreshContactList = function () {
+    function refreshContactList() {
         $.ajax({
-            url: '/AddressBook/RefreshContactList',
+            url: ajaxRefreshContact,
             type: 'GET',
             success: function (result) {
                 $("#contactListTable").html(result);
@@ -27,7 +54,7 @@
         });
     }
 
-    var setupDialog = function (partialView, operationUrl) {
+    function setupDialog(partialView, operationUrl) {
         $("#overlay").show();
 
         partialView.dialog(
@@ -68,7 +95,7 @@
         partialView.show();
     }
 
-    var editContact = function (id) {
+    function editContact(id) {
         var partialView = $('<div id="partialView"></div>');
         var operationUrl = '/AddressBook/EditContact';
         $.ajax({
@@ -84,43 +111,24 @@
         });
     }
 
-    var bindButtons = function() {
+    function bindButtons() {
         var editButtons = $(".editContactButton");
-        editButtons.each().on('click', function() {
+        editButtons.on('click', function () {
             var itemId = $(this).attr('data-id');
             editContact(itemId);
         });
 
         var removeButtons = $(".removeContactButton");
-        removeButtons.each().on('click', function () {
+        removeButtons.on('click', function () {
             var itemId = $(this).attr('data-id');
             removeContact(itemId);
         });
     }
+
     return {
         EditContact: editContact,
         RemoveContact: removeContact,
-        RefreshContactList: refreshContactList,
-        SetupDialog: setupDialog
+        SetupDialog: setupDialog,
     };
-})();
 
-jQuery(document).ready(function () {
-    ContactList.RefreshContactList();
-    $("#overlay").hide();
-    $("#partialView").hide();
-    $("#AddNewContactButton").on('click', function () {
-        var partialView = $('<div id="partialView"></div>');
-        var operationUrl = '/AddressBook/AddNewContact';
-        $.ajax({
-            url: operationUrl,
-            contentType: 'application/html',
-            type: 'GET',
-            dataType: 'html'
-        }).success(function (result) {
-
-            partialView.append(result);
-            ContactList.SetupDialog(partialView, operationUrl);
-        });
-    });
-});
+})(jQuery);
